@@ -49,9 +49,10 @@ module.exports = {
 	},
 	//Delete - Method DELETE
 	async destroy(req, res) {
-		const result = await Product.destroy({
-			where: {
-				id: req.params.id
+		const { id } = req.params
+		const result = await Product.destroy(id, {
+			include: {
+				association: 'products'
 			}
 		});
 

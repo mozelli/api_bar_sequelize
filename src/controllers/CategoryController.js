@@ -25,12 +25,14 @@ module.exports = {
 	},
 	//Delete - Method DELETE
 	async destroy(req, res) {
-		const result = await Category.destroy({
+		const { id } = req.params;
+
+		const category = await Category.destroy({
 			where: {
-				id: req.params.id
+				id
 			}
 		});
 
-		return res.json(result);
+		return res.json(category);
 	}
 }

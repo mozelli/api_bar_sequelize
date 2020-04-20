@@ -1,20 +1,23 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Category extends Model {
+class Product extends Model {
 	static init(sequelize) {
 		super.init({
-			name: DataTypes.STRING
+			name: DataTypes.STRING,
 		}, {
 			sequelize
 		});
 	}
 
 	static associate(models) {
-		this.hasMany(models.Product, {
+		this.belongsTo(models.Category, {
 			foreignKey: 'categories_id',
-			as: 'products'
+			as: 'category_assoc'
 		});
 	}
 }
 
-module.exports = Category;
+module.exports = Product;
+
+
+			//categories_id: DataTypes.INTEGER

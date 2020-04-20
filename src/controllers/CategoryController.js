@@ -9,7 +9,7 @@ module.exports = {
 	},
 	//Read All - Method GET
 	async list(req, res) {
-		categories = await Category.findAll();
+		const categories = await Category.findAll();
 		return res.json(categories);
 	},
 	//Update - Method PUT
